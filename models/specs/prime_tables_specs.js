@@ -36,6 +36,17 @@ describe("Prime Table", function() {
     assert.strictEqual(false, primeTable.isPrime(333))
   })
 
+  it("should be able to list n prime numbers in the primes array(n=3)", function() {
+    primeTable.findPrimeNumbers(3)
+    assert.strictEqual(4, primeTable.primes.length)
+    assert.deepStrictEqual(["", 2, 3, 5], primeTable.primes)
+  })
+
+  it("should be able to list n prime numbers in the primes array(n=9)", function() {
+    primeTable.findPrimeNumbers(9)
+    assert.strictEqual(10, primeTable.primes.length)
+    assert.deepStrictEqual(["", 2, 3, 5, 7, 11, 13, 17, 19, 23], primeTable.primes)
+  })
 
 
 })

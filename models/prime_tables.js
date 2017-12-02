@@ -15,7 +15,28 @@ PrimeTable.prototype.isPrime = function(n) {
       return false
     }
   }
+  // n=2 automatically returns true as i starts at 2 so is never less than n
   return true
+}
+
+
+// helper function to list n prime numbers
+PrimeTable.prototype.findPrimeNumbers = function(n) {
+  // as empty space is required in this.primes[0]
+  this.primes.push("")
+
+  // 2 is the first prime number and should be the first number pushed into the array
+  let i = 2
+
+  // loop untill length of array = n+1
+  while (this.primes.length < n + 1) {
+    if (this.isPrime(i)) {
+      this.primes.push(i)
+    }
+    i++
+  }
+  // console.log("primes", this.primes)
+  return this.primes
 }
 
 module.exports = PrimeTable
