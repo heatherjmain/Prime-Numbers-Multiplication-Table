@@ -2,12 +2,19 @@
   "name": "find_my_past",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "prime_tables.js",
   "scripts": {
-    "test": "mocha src/models/specs",
-    "start": "nodemon server.js"
-
+    "test": "mocha client/src/models/specs",
+    "start": "nodemon server.js",
+    "build": "cd client && webpack -w"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^4.0.1",
+    "webpack": "^3.9.1"
+  },
+  "dependencies": {
+    "express": "^4.16.2"
+  }
 }
