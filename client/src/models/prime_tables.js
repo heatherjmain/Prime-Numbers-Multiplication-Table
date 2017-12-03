@@ -69,6 +69,9 @@ function matrix(args) {
     primesMultiplication.push(multiply)
   }
   // console.log("primesMultiplication", primesMultiplication);
+
+  // chnage 1st element to empty string as 1 is not a prime number
+  primesMultiplication[0][0] = ""
   return primesMultiplication
 }
 

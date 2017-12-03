@@ -13,18 +13,21 @@ window.addEventListener("load", function() {
 
       let table = run.makeGrid(requestedNumber)
       // console.log("table", table)
+
+      let tableWrapper = document.getElementById("table-wrapper")
+      let primesTable = document.createElement("table")
+
       for (let row of table) {
-        let tableWrapper = document.getElementById("table-wrapper")
-        let table = document.createElement("table")
         let tableRow = document.createElement("tr")
 
         for (element of row) {
           let number = document.createElement("td")
           let value = document.createTextNode(element)
+          
           number.appendChild(value)
           tableRow.appendChild(number)
-          table.appendChild(tableRow)
-          tableWrapper.appendChild(table)
+          primesTable.appendChild(tableRow)
+          tableWrapper.appendChild(primesTable)
         }
 
       }

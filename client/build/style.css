@@ -1,1 +1,34 @@
+*{
+  font-size: 1em;
+  font-family: Arial;
+}
 
+h1{
+  font-size: 2em;
+  text-align: center;
+  padding-bottom: 5%;
+}
+
+#request-input{
+  text-align: center;
+  padding-bottom: 5%;
+}
+
+#table-wrapper{
+  padding-bottom: 5%;
+}
+
+table{
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2%;
+  border: 1px solid black;
+}
+
+#reset-button{
+  text-align: center;
+}
+
+td{
+  width: 5em;
+}
