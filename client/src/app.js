@@ -7,6 +7,7 @@ window.addEventListener("load", function() {
     let button = document.getElementById("submit-button")
 
     button.addEventListener("click", function() {
+
       let userInputField = document.getElementById("user-input")
       let requestedNumber = parseInt(userInputField.value)
       // console.log("user input", requestedNumber)
@@ -23,7 +24,7 @@ window.addEventListener("load", function() {
         for (element of row) {
           let number = document.createElement("td")
           let value = document.createTextNode(element)
-          
+
           number.appendChild(value)
           tableRow.appendChild(number)
           primesTable.appendChild(tableRow)
