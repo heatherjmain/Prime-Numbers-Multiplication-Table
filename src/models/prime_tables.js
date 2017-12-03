@@ -68,7 +68,7 @@ function matrix(args) {
     }
     primesMultiplication.push(multiply)
   }
-  console.log("primesMultiplication", primesMultiplication);
+  // console.log("primesMultiplication", primesMultiplication);
   return primesMultiplication
 }
 
@@ -77,7 +77,13 @@ PrimeTable.prototype.makeGrid = function(n) {
   // grid attribute required in constructor
   // grid will be an array of arrays
   this.grid = matrix(this.primes)
+  // console.log("grid", this.grid)
   return this.grid
 }
+
+// TEST
+// var run = new PrimeTable
+// run.makeGrid(3)
+
 
 module.exports = PrimeTable

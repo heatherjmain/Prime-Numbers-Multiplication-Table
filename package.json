@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha models/specs",
+    "test": "mocha src/models/specs",
     "start": "nodemon server.js"
 
   },
