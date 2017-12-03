@@ -5,16 +5,10 @@ var PrimeTable = function() {
 
 // helper function to determine whether n is prime
 PrimeTable.prototype.isPrime = function(n) {
-  // divide n by each number smaller than n
   // Only need to check up to sqrt of n as if divisble by a number larger than sqrt then also divisible by a number smaller - small performance improvement
-  // no need to include 1 - start at 2
-  // no need to include n
-  let i
-  let sqrtN = Math.floor(Math.sqrt(n))
-
-  for (i = 2; i <= sqrtN; i++) {
+  // no need to include 1 or n - start at 2
+  for (let i = 2; i <= Math.floor(Math.sqrt(n)); i++) {
     if (n % i === 0) {
-      // if divisible by any other number then not prime
       return false
     }
   }
@@ -22,13 +16,12 @@ PrimeTable.prototype.isPrime = function(n) {
   return true
 }
 
-
 // helper function to list n prime numbers
 PrimeTable.prototype.findPrimeNumbers = function(n) {
   // 1 has to be pushed in as the 1st element as this is used to calculate multiplication when making the grid - if 0 or empty string used, then the first element in every row would be 0
   this.primes.push(1)
 
-  // 2 is the first prime number and should be the first number pushed into the array
+  // as n must always be at least 1, 2 will always be the first prime number and should be the next number pushed into the array
   let i = 2
 
   // loop untill length of array = n+1
@@ -42,53 +35,34 @@ PrimeTable.prototype.findPrimeNumbers = function(n) {
   return this.primes
 }
 
-
 // helper function to create matrix
-// args used as length of array will vary each time
 function matrix(args) {
-  // create primesArray to hold this.primes info (passed in as args) as otherwise unable to access - this is a temporary array to be used to create grid
-  let primesArray = []
-
-  // loop through args(this.primes) and push each element into primesArray
-  for (let i = 0; i < args.length; i++) {
-    // loop through args, pushing each element into a temporary array
-    primesArray.push(args[i])
-  }
-
-  // primesMulitplication will contain array of arrays which makes up the whole grid
+    // primesMulitplication will contain array of arrays which makes up the whole grid
   let primesMultiplication = []
-  primesMultiplication.push(primesArray)
+  primesMultiplication.push(args) //args is equal to this.rimes and makes the first row of the matrix
 
-  // start at 1st element of primesArray as 0 element is empty string
-  for (let i = 1; i < primesArray.length; i++) {
-    // multiply array will collect the multiplied numbers for each row
-    // this creates an array which will make up each row
+  // start at 1st element of primesArray as 0 element will not be used to make another row.
+  for (let i = 1; i < args.length; i++) {
+    // this creates an empty array for each row required for the matrix
     let multiply = []
 
-    for (let j = 0; j < primesArray.length; j++) {
-      multiply.push(primesArray[i] * primesArray[j])
+    for (let j = 0; j < args.length; j++) {
+      // takes each element(i) of args and multiplies by every element(j) of args pushing into the array reated above
+      multiply.push(args[i] * args[j])
     }
     primesMultiplication.push(multiply)
   }
   // console.log("primesMultiplication", primesMultiplication);
 
-  // chnage 1st element to empty string as 1 is not a prime number
-  primesMultiplication[0][0] = ""
+  primesMultiplication[0][0] = "" // empty string as 1 is not a prime number and no longer needed
   return primesMultiplication
 }
 
 PrimeTable.prototype.makeGrid = function(n) {
   this.findPrimeNumbers(n)
-  // grid attribute required in constructor
-  // grid will be an array of arrays
-  this.grid = matrix(this.primes)
+  this.grid = matrix(this.primes) //this.grid is an array of arrays
   // console.log("grid", this.grid)
   return this.grid
 }
-
-// TEST
-// var run = new PrimeTable
-// run.makeGrid(3)
-
 
 module.exports = PrimeTable
