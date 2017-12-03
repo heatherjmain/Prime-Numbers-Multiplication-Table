@@ -7,7 +7,7 @@ window.addEventListener("load", function() {
     let button = document.getElementById("submit-button")
 
     button.addEventListener("click", function() {
-
+      
       let userInputField = document.getElementById("user-input")
       let requestedNumber = parseInt(userInputField.value)
       // console.log("user input", requestedNumber)

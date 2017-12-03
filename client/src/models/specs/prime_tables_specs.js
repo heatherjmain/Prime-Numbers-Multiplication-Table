@@ -55,11 +55,11 @@ describe("Prime Table", function() {
   })
 
   it("should be able to make a grid of multiplied prime numbers", function() {
-    assert.deepStrictEqual([[1 ,2, 3, 5], [2, 4, 6, 10], [3, 6, 9, 15], [5, 10, 15, 25]], primeTable.makeGrid(3))
+    assert.deepStrictEqual([['' ,2, 3, 5], [2, 4, 6, 10], [3, 6, 9, 15], [5, 10, 15, 25]], primeTable.makeGrid(3))
   })
 
   it("should be able to make a grid of multiplied prime numbers", function() {
-    assert.deepStrictEqual([[1 ,2, 3, 5, 7], [2, 4, 6, 10, 14], [3, 6, 9, 15, 21], [5, 10, 15, 25, 35], [7, 14, 21, 35, 49]], primeTable.makeGrid(4))
+    assert.deepStrictEqual([['' ,2, 3, 5, 7], [2, 4, 6, 10, 14], [3, 6, 9, 15, 21], [5, 10, 15, 25, 35], [7, 14, 21, 35, 49]], primeTable.makeGrid(4))
   })
 
 })

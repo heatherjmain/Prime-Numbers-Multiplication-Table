@@ -6,11 +6,13 @@ var PrimeTable = function() {
 // helper function to determine whether n is prime
 PrimeTable.prototype.isPrime = function(n) {
   // divide n by each number smaller than n
+  // Only need to check up to sqrt of n as if divisble by a number larger than sqrt then also divisible by a number smaller - small performance improvement
   // no need to include 1 - start at 2
   // no need to include n
   let i
+  let sqrtN = Math.floor(Math.sqrt(n))
 
-  for (i = 2; i < n; i++) {
+  for (i = 2; i <= sqrtN; i++) {
     if (n % i === 0) {
       // if divisible by any other number then not prime
       return false
