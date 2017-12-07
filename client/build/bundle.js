@@ -81,11 +81,9 @@ window.addEventListener("load", function() {
       let requestedNumber = parseInt(userInputField.value)
       // console.log("user input", requestedNumber)
 
-      if (requestedNumber < 1 || requestedNumber > 100) {
-        let errorMessage = document.getElementById("error-message")
-        errorMessage.innerText = "Number must be between 1 and 100"
+      if (requestedNumber >= 1 && requestedNumber <= 100) {
 
-      } else {
+        const startTime = Date.now()
 
         let table = run.makeGrid(requestedNumber)
         // console.log("table", table)
@@ -108,6 +106,11 @@ window.addEventListener("load", function() {
 
         }
         tableWrapper.appendChild(primesTable)
+        const endTime = Date.now()
+        console.log('render took', endTime - startTime, 'ms')
+      } else {
+        let errorMessage = document.getElementById("error-message")
+        errorMessage.innerText = "Number must be between 1 and 100"
 
       }
     })
@@ -143,6 +146,10 @@ PrimeTable.prototype.findPrimeNumbers = function(n) {
   const startTime = Date.now()
   // 1 has to be pushed in as the 1st element as this is used to calculate multiplication when making the grid - if 0 or empty string used, then the first element in every row would be 0
   // 2 is always the firstprime number so pushed in
+  if (n === 0) {
+    return []
+  }
+
   this.primes.push(1, 2)
 
   let i = 3

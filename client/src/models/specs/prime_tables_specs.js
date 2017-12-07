@@ -48,10 +48,10 @@ describe("Prime Table", function() {
     assert.deepStrictEqual([1, 2, 3, 5, 7, 11, 13, 17, 19, 23], primeTable.primes)
   })
 
-  it("should return an array with 1 empty string if 0 passed in", function() {
+  it("should return an empty array if 0 passed in", function() {
     primeTable.findPrimeNumbers(0)
-    assert.strictEqual(1, primeTable.primes.length)
-    assert.deepStrictEqual([1], primeTable.primes)
+    assert.strictEqual(0, primeTable.primes.length)
+    assert.deepStrictEqual([], primeTable.primes)
   })
 
   it("should be able to make a grid of multiplied prime numbers", function() {

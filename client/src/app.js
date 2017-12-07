@@ -12,11 +12,9 @@ window.addEventListener("load", function() {
       let requestedNumber = parseInt(userInputField.value)
       // console.log("user input", requestedNumber)
 
-      if (requestedNumber < 1 || requestedNumber > 100) {
-        let errorMessage = document.getElementById("error-message")
-        errorMessage.innerText = "Number must be between 1 and 100"
+      if (requestedNumber >= 1 && requestedNumber <= 100) {
 
-      } else {
+        const startTime = Date.now()
 
         let table = run.makeGrid(requestedNumber)
         // console.log("table", table)
@@ -39,6 +37,11 @@ window.addEventListener("load", function() {
 
         }
         tableWrapper.appendChild(primesTable)
+        const endTime = Date.now()
+        console.log('render took', endTime - startTime, 'ms')
+      } else {
+        let errorMessage = document.getElementById("error-message")
+        errorMessage.innerText = "Number must be between 1 and 100"
 
       }
     })
