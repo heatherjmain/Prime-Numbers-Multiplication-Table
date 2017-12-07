@@ -76,29 +76,38 @@ window.addEventListener("load", function() {
     let button = document.getElementById("submit-button")
 
     button.addEventListener("click", function() {
-      
+
       let userInputField = document.getElementById("user-input")
       let requestedNumber = parseInt(userInputField.value)
       // console.log("user input", requestedNumber)
 
-      let table = run.makeGrid(requestedNumber)
-      // console.log("table", table)
+      if (requestedNumber < 1 || requestedNumber > 100) {
+        let errorMessage = document.getElementById("error-message")
+        errorMessage.innerText = "Number must be between 1 and 100"
 
-      let tableWrapper = document.getElementById("table-wrapper")
-      let primesTable = document.createElement("table")
+      } else {
 
-      for (let row of table) {
-        let tableRow = document.createElement("tr")
+        let table = run.makeGrid(requestedNumber)
+        // console.log("table", table)
 
-        for (element of row) {
-          let number = document.createElement("td")
-          let value = document.createTextNode(element)
+        let tableWrapper = document.getElementById("table-wrapper")
+        let primesTable = document.createElement("table")
 
-          number.appendChild(value)
-          tableRow.appendChild(number)
+        for (let row of table) {
+          let tableRow = document.createElement("tr")
+
+          for (element of row) {
+
+            let number = document.createElement("td")
+            let value = document.createTextNode(element)
+
+            number.appendChild(value)
+            tableRow.appendChild(number)
+          }
           primesTable.appendChild(tableRow)
-          tableWrapper.appendChild(primesTable)
+
         }
+        tableWrapper.appendChild(primesTable)
 
       }
     })
@@ -131,22 +140,28 @@ PrimeTable.prototype.isPrime = function(n) {
 
 // helper function to list n prime numbers
 PrimeTable.prototype.findPrimeNumbers = function(n) {
+  const startTime = Date.now()
   // 1 has to be pushed in as the 1st element as this is used to calculate multiplication when making the grid - if 0 or empty string used, then the first element in every row would be 0
-  this.primes.push(1)
+  // 2 is always the firstprime number so pushed in
+  this.primes.push(1, 2)
 
-  // as n must always be at least 1, 2 will always be the first prime number and should be the next number pushed into the array
-  let i = 2
+  let i = 3
 
   // loop untill length of array = n+1
   while (this.primes.length < n + 1) {
     if (this.isPrime(i)) {
       this.primes.push(i)
     }
-    i++
+    // only odd numbers need to checked
+    i+=2
   }
   // console.log("primes", this.primes)
+  const endTime = Date.now()
+  console.log('findPrimeNumbers took', endTime - startTime, 'ms')
   return this.primes
 }
+
+
 
 // helper function to create matrix
 function matrix(args) {

@@ -18,22 +18,28 @@ PrimeTable.prototype.isPrime = function(n) {
 
 // helper function to list n prime numbers
 PrimeTable.prototype.findPrimeNumbers = function(n) {
+  const startTime = Date.now()
   // 1 has to be pushed in as the 1st element as this is used to calculate multiplication when making the grid - if 0 or empty string used, then the first element in every row would be 0
-  this.primes.push(1)
+  // 2 is always the firstprime number so pushed in
+  this.primes.push(1, 2)
 
-  // as n must always be at least 1, 2 will always be the first prime number and should be the next number pushed into the array
-  let i = 2
+  let i = 3
 
   // loop untill length of array = n+1
   while (this.primes.length < n + 1) {
     if (this.isPrime(i)) {
       this.primes.push(i)
     }
-    i++
+    // only odd numbers need to checked
+    i+=2
   }
   // console.log("primes", this.primes)
+  const endTime = Date.now()
+  console.log('findPrimeNumbers took', endTime - startTime, 'ms')
   return this.primes
 }
+
+
 
 // helper function to create matrix
 function matrix(args) {

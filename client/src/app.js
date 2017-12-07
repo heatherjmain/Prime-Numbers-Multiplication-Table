@@ -7,29 +7,38 @@ window.addEventListener("load", function() {
     let button = document.getElementById("submit-button")
 
     button.addEventListener("click", function() {
-      
+
       let userInputField = document.getElementById("user-input")
       let requestedNumber = parseInt(userInputField.value)
       // console.log("user input", requestedNumber)
 
-      let table = run.makeGrid(requestedNumber)
-      // console.log("table", table)
+      if (requestedNumber < 1 || requestedNumber > 100) {
+        let errorMessage = document.getElementById("error-message")
+        errorMessage.innerText = "Number must be between 1 and 100"
 
-      let tableWrapper = document.getElementById("table-wrapper")
-      let primesTable = document.createElement("table")
+      } else {
 
-      for (let row of table) {
-        let tableRow = document.createElement("tr")
+        let table = run.makeGrid(requestedNumber)
+        // console.log("table", table)
 
-        for (element of row) {
-          let number = document.createElement("td")
-          let value = document.createTextNode(element)
+        let tableWrapper = document.getElementById("table-wrapper")
+        let primesTable = document.createElement("table")
 
-          number.appendChild(value)
-          tableRow.appendChild(number)
+        for (let row of table) {
+          let tableRow = document.createElement("tr")
+
+          for (element of row) {
+
+            let number = document.createElement("td")
+            let value = document.createTextNode(element)
+
+            number.appendChild(value)
+            tableRow.appendChild(number)
+          }
           primesTable.appendChild(tableRow)
-          tableWrapper.appendChild(primesTable)
+
         }
+        tableWrapper.appendChild(primesTable)
 
       }
     })

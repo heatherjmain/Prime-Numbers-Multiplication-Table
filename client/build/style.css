@@ -19,6 +19,10 @@ h1{
   padding-bottom: 5%;
 }
 
+#user-input{
+  width: 20em;
+}
+
 #table-wrapper{
   padding-bottom: 5%;
 }
@@ -35,8 +39,11 @@ tr:nth-child(even){
 }
 
 td{
-  width: 3em;
+  width: auto;
   text-align: center;
   border: 0.5px solid black;
-  padding: 1%;
+}
+
+#error-message{
+  text-align: center;
 }
